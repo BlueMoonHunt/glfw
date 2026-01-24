@@ -32,9 +32,14 @@ set win32_src=%glfw_src_dir%\win32_init.c ^
 
 set defines=-D_GLFW_WIN32 -D_CRT_SECURE_NO_WARNINGS -DUNICODE -D_UNICODE
 set includes=-I%glfw_inc_dir% -I%glfw_src_dir%
-set opts=-nologo -c -O2 -Zi -std:c11 %defines% %includes%
+set opts=-nologo -c -O2 -std:c11 %defines% %includes%
 
-cl %opts% %common_src% %win32_src%
-lib -nologo *.obj -out:glfw3.lib
-del *.obj
+if not exist "build" mkdir build
+pushd build
+if not exist "glfw3.lib" (
+    cl %opts% %common_src% %win32_src%
+    lib -nologo *.obj -out:glfw3.lib
+    del *.obj
+)
+popd
 endlocal
