@@ -6,12 +6,11 @@ set workspace=%workspace:~0,-1%
 set glfw_src_dir=%workspace%\src
 set glfw_inc_dir=%workspace%\include
 
-@REM %glfw_src_dir%\vulkan.c ^
-
 set common_src=%glfw_src_dir%\context.c ^
 %glfw_src_dir%\init.c ^
 %glfw_src_dir%\input.c ^
 %glfw_src_dir%\monitor.c ^
+%glfw_src_dir%\vulkan.c ^
 %glfw_src_dir%\platform.c ^
 %glfw_src_dir%\window.c ^
 %glfw_src_dir%\egl_context.c ^
